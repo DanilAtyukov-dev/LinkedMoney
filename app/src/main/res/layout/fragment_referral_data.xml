@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="5dp"
+
+    android:padding="5dp"
     tools:context=".ui.home.referralData.ReferralDataFragment">
 
 
@@ -15,7 +16,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/soft_square"
         android:padding="5dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -44,7 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/soft_square"
         android:gravity="center"
@@ -72,12 +72,12 @@
             android:fontFamily="@font/bold"
             android:textColor="@color/black"
             android:gravity="center"
-            android:text="Реф бонус"
+            android:text="Реф. бонус"
             android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/soft_square"
         android:gravity="center"
@@ -104,7 +104,7 @@
             android:fontFamily="@font/bold"
             android:gravity="center"
             android:textColor="@color/black"
-            android:text="рефералов"
+            android:text="Рефералов"
             android:textSize="20sp" />
     </LinearLayout>
 

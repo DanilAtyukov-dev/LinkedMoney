@@ -41,6 +41,7 @@ class ScoresViewModel : ViewModel(), SharedPreferences.OnSharedPreferenceChangeL
     val allSteps: LiveData<Int> = _allSteps
 
     private val _allGpsDistance = MutableLiveData<String>().apply {
+        //value = "9.3"
         value = App.roundFloat(RetrievedPreference.getAllDistanceGPS()/1000, "#.#")
     }
     val allGpsDistance: LiveData<String> = _allGpsDistance
@@ -56,7 +57,6 @@ class ScoresViewModel : ViewModel(), SharedPreferences.OnSharedPreferenceChangeL
         _allGpsDistance.value = App.roundFloat(p0.getFloat("AllDistanceGPS", 0f)/1000, "#.#")
         _confirmSteps.value = p0.getInt("confirmSteps", 0).toString()
 
-        println("onSharedPreferenceChanged")
 
         if(p1.equals("ads") || p1.equals("confirmSteps") || p1.equals("sopr") || p1.equals("krv")){
         _stepPrice.value = App.getStepPrice(p0.getInt("confirmSteps", 0),  p0.getInt("ads", 0), p0.getInt("krv", 10), p0.getFloat("sopr", 0.01f))

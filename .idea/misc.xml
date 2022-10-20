@@ -16,10 +16,11 @@
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/drawable/pedometer_button.xml" value="0.3595" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/drawable/soft_square.xml" value="0.263" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/drawable/spedometer_oval.xml" value="0.3595" />
-        <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/activity_login2.xml" value="0.5" />
+        <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout-small/fragment_home.xml" value="0.14188034188034188" />
+        <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/activity_login2.xml" value="0.22" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
-        <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_home.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_notifications.xml" value="0.33695652173913043" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_pedometer.xml" value="0.32065217391304346" />
         <entry key="..\:/Users/atyuk/AndroidStudioProjects/LinkedMoney/app/src/main/res/layout/fragment_referral_data.xml" value="0.29846014492753625" />

@@ -51,9 +51,11 @@ class PedometerViewModel : ViewModel(), SharedPreferences.OnSharedPreferenceChan
     }
 
     fun stepsSaved() {
-       val task = FDatabaseWriter.writeSteps(numSteps.toLong())
+       val task = FDatabaseWriter.writeSteps(numSteps.toLong()-RetrievedPreference.getSavedSteps())
         task.addOnCompleteListener(OnCompleteListener {
             if (it.isSuccessful) {
+                SavedPreference.clearSavedSteps()
+
                 App.it().appComponent.editor.putInt("steps", 0).apply()
                 App.it().appComponent.editor.putFloat("distanceGPS", 0f).apply()
 

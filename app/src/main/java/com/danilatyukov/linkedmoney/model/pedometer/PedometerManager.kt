@@ -25,6 +25,7 @@ class PedometerManager: SensorEventListener, StepListener {
 
 
     init {
+        SavedPreference.clearSavedSteps()
         // Get an instance of the SensorManager
         sensorManager = App.it().appContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         simpleStepDetector = StepDetector()
@@ -48,9 +49,16 @@ class PedometerManager: SensorEventListener, StepListener {
     override fun step(timeNs: Long) {
 
             SavedPreference.incrementAllSteps(1)
-
-
         numSteps++
+
+        if (numSteps%100==0){
+            SavedPreference.incrementSavedSteps(100)
+            FDatabaseWriter.writeSteps(100)
+        }
+
+
+
+
         App.it().appComponent.editor.putInt("steps", numSteps)
         App.it().appComponent.editor.commit()
     }

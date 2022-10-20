@@ -53,7 +53,7 @@
                 app:cardElevation="30dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="50dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:clickable="true"
                 android:focusable="true"
@@ -92,6 +92,7 @@
                 android:gravity="center"
                 android:layout_marginHorizontal="50dp"
                 android:fontFamily="@font/bold"
+
                 android:layout_height="wrap_content"
                 android:text="@string/privacy" />
 

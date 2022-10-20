@@ -52,6 +52,7 @@ class PedometerFragment : Fragment() {
 
         setBtnState()
         _binding.pedometerButton.setOnClickListener {
+            App.it().vibratePhone()
             onChangeClick()
         }
 

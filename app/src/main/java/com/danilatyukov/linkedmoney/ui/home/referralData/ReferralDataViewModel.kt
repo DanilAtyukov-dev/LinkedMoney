@@ -31,8 +31,8 @@ class ReferralDataViewModel : ViewModel(), SharedPreferences.OnSharedPreferenceC
     var referralBonus: LiveData<String> = _referralBonus
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
-        println("MVVM WORKED!")
         _referralNum.value = p0!!.getInt("referrals", 0).toString()
-        _referralBonus.value = p0.getFloat("refBonus", 0f).toString()
+        _referralBonus.value = App.roundFloat(p0.getFloat("refBonus", 0f), "#.#####")
+
     }
 }

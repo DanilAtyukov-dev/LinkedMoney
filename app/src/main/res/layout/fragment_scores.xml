@@ -5,11 +5,12 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     tools:context=".ui.home.scores.ScoresFragment">
 
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/soft_square"
@@ -39,7 +40,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:background="@drawable/soft_square"
         android:layout_marginTop="20dp"
@@ -74,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:padding="5dp"
         android:background="@drawable/soft_square"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +89,7 @@
             android:gravity="center"
             android:text="Стоимость вашего шага"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -127,7 +129,7 @@
 
 
     <LinearLayout
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="10dp"
@@ -143,28 +145,33 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:text="100.09р"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/barterInfoImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@android:drawable/ic_menu_info_details" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/cashOut"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:padding="5dp"
         android:background="@drawable/soft_square_button"
         android:gravity="center"
-        android:text="Запросить вывод"
-        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bold"
+        android:text="Запросить \n вывод"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent" />
 

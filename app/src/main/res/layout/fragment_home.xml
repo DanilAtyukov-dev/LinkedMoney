@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/logo1"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView3"
         app:layout_constraintEnd_toEndOf="parent"

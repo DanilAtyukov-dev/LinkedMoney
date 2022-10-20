@@ -46,9 +46,15 @@ class WorldMapFragment : Fragment() {
 
         val worldMapViewModel = ViewModelProvider(this)[WorldMapViewModel::class.java]
 
-        _binding.mapCenter.setOnClickListener{setMapCenter()}
-        _binding.zoomOut.setOnClickListener{mapController.zoomOut()}
-        _binding.zoomIn.setOnClickListener{mapController.zoomIn()}
+        _binding.mapCenter.setOnClickListener{
+            App.it().vibratePhone()
+            setMapCenter()}
+        _binding.zoomOut.setOnClickListener{
+            App.it().vibratePhone()
+            mapController.zoomOut()}
+        _binding.zoomIn.setOnClickListener{
+            App.it().vibratePhone()
+            mapController.zoomIn()}
 
 
         worldMapViewModel.points.observe(viewLifecycleOwner) { it ->
@@ -73,6 +79,7 @@ class WorldMapFragment : Fragment() {
             _binding.worldMapView.invalidate()
 
             _binding.clearedMap.setOnClickListener {
+                App.it().vibratePhone()
                 markers.forEach{
                     it.remove(_binding.worldMapView)
 
@@ -80,7 +87,7 @@ class WorldMapFragment : Fragment() {
                 Thread{
                     App.it().appComponent.geopointDao.deleteAll()
                 }.start()
-
+                _binding.worldMapView.invalidate()
             }
         }
 
@@ -110,7 +117,7 @@ class WorldMapFragment : Fragment() {
             _binding.worldMapView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
             _binding.worldMapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
             _binding.worldMapView.setMultiTouchControls(true)
-            mapController.setZoom(16.0)
+            mapController.setZoom(3.0)
             _binding.worldMapView.maxZoomLevel = 18.2
             _binding.worldMapView.minZoomLevel = 3.0
             _binding.worldMapView.setBuiltInZoomControls(false)
@@ -131,18 +138,17 @@ class WorldMapFragment : Fragment() {
 
         myMarker.position = GeoPoint(latitude, longitude)
         myMarker.infoWindow = GeopointInfoWindow(
-            _binding.worldMapView,
-            time,
-            speed.plus("\n acc $accuracy")
+            _binding.worldMapView, time, speed.plus("\n acc $accuracy")
         )
         _binding.worldMapView.overlays.add(myMarker)
-
+        markers.add(myMarker)
     }
 
 
 
     private fun setCurrentMarker(geoPoint: GeoPoint) {
         val myMarker = Marker(_binding.worldMapView)
+        mapController.setZoom(16.0)
         markers.add(myMarker)
 
         myMarker.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_location_pin)

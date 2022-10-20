@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.provider.Settings
 import com.danilatyukov.linkedmoney.data.local.preferences.RetrievedPreference
 import com.danilatyukov.linkedmoney.data.local.preferences.SavedPreference
@@ -15,12 +18,14 @@ import java.text.DecimalFormat
 class App : Application() {
     lateinit var appComponent: AppComponent
     lateinit var context: Context
+    public var mainActivity: MainActivity? = null
 
     companion object {
+        val version: Long = 6
         lateinit var ANDROID_ID: String
 
-        lateinit var app: Application
-        fun it(): Application {
+        lateinit var app: App
+        fun it(): App {
             return app
         }
 
@@ -45,20 +50,21 @@ class App : Application() {
         }
 
         fun getStepPrice(doksp: Int, dkpp: Int, krv: Int, sopr: Float): String {
-            println("getStepPrice $doksp $dkpp $krv $sopr ")
 
-            val ka = 30
+
+            val ka = RetrievedPreference.getka()
             val kr = 5
 
             val odpp = sopr*dkpp
             val ddka = odpp*ka/100
-            println("odpp $odpp ddka $ddka")
+
 
             val odppvka = odpp - ddka
 
             //бонус реферерру
             val ddkr = odppvka*kr/100
             //предыдущий записанный бонус
+
             val wrb = RetrievedPreference.getWrittenRefBonus()
             if (wrb<ddkr.toDouble()) {
                 FDatabaseWriter.writtenRefBonus(ddkr.toDouble())
@@ -67,15 +73,16 @@ class App : Application() {
 
 
             val idpp = odppvka-ddkr
-            println("odppvka $odppvka ddkr $ddkr idpp $idpp")
+
 
             val rssr = idpp/doksp
             val ssv = krv*rssr
 
-            println("SSV  ${ssv}")
+
 
             val stepPrice = if (ssv.toString().equals("NaN") || ssv.toString().equals("Infinity")) "0.0" else ssv.toBigDecimal().toString()
             SavedPreference.setStepPrice(stepPrice)
+
 
             return stepPrice
         }
@@ -95,11 +102,19 @@ class App : Application() {
 
     }
 
+    fun vibratePhone() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(100)
+        }
+    }
+
 
     private val listener =
         OnSharedPreferenceChangeListener { sharedPreferences, key ->
-            //do your code here
-            println("sharedPreferencesSteps ${sharedPreferences.getInt("steps", 0)}")
+
         }
 
     fun unregisterListener() {
@@ -119,3 +134,10 @@ val Context.appContext: Context
         is App -> context
         else -> this.applicationContext.appContext
     }
+
+/*
+var Context.mainActivity: MainActivity
+    get() = when (this) {
+        is App -> mainActivity
+        else -> this.applicationContext.mainActivity
+    }*/
